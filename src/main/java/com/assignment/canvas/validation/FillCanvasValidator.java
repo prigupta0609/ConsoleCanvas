@@ -7,17 +7,18 @@ import com.assignment.canvas.receiver.Canvas;
 import java.util.Arrays;
 import java.util.List;
 
-public class LineValidator implements IValidator {
+public class FillCanvasValidator implements IValidator{
 
-    private static final int REQ_PARAMS = 5;
-    private static LineValidator validator = null;
-    private LineValidator() {}
+    private static final int MIN_PARAM = 3;
+    private static final int MAX_PARAM = 4;
+    private static FillCanvasValidator validator = null;
+    private FillCanvasValidator() {}
 
-    public static LineValidator getInstance() {
+    public static FillCanvasValidator getInstance() {
         if (validator == null) {
-            synchronized (LineValidator.class) {
+            synchronized (FillCanvasValidator.class) {
                 if (validator == null) {
-                    validator = new LineValidator();
+                    validator = new FillCanvasValidator();
                 }
             }
         }
@@ -29,20 +30,15 @@ public class LineValidator implements IValidator {
         if (canvas == null || canvas.getMatrix() == null || canvas.getMatrix().length == 0) {
             throw new InvalidInputException(Error.CANVAS_NOT_EXIT.getErrorDesc());
         }
-        if (ValidationUtil.isReqParamPresent(commandParamList, REQ_PARAMS)) {
+        if (ValidationUtil.isParamInRange(commandParamList.size(), MIN_PARAM, MAX_PARAM)) {
             try {
-                int x1 = Integer.parseInt(commandParamList.get(1));
-                int y1 = Integer.parseInt(commandParamList.get(2));
-                int x2 = Integer.parseInt(commandParamList.get(3));
-                int y2 = Integer.parseInt(commandParamList.get(4));
-                if (ValidationUtil.isOutOfCanvas(Arrays.asList(x1, x2), Arrays.asList(y1, y2), canvas.getMatrix())) {
+                int x = Integer.parseInt(commandParamList.get(1));
+                int y = Integer.parseInt(commandParamList.get(2));
+                if (ValidationUtil.isOutOfCanvas(Arrays.asList(x), Arrays.asList(y), canvas.getMatrix())) {
                     throw new InvalidInputException(Error.SHAPE_OUT_OF_CANVAS.getErrorDesc());
                 }
-                if (ValidationUtil.isNegativeNum(Arrays.asList(x1, x2, y1, y2))) {
+                if (ValidationUtil.isNegativeNum(Arrays.asList(x, y))) {
                     throw new InvalidInputException(Error.NEGATIVE_PARAMS.getErrorDesc());
-                }
-                if (!ValidationUtil.isStraightLine(x1, y1, x2, y2)) {
-                    throw new InvalidInputException(Error.INVALID_LINE_COORDINATES.getErrorDesc());
                 }
             } catch (NumberFormatException exception) {
                 throw new InvalidInputException(Error.NON_NUMERIC_COORDINATES.getErrorDesc());

@@ -5,15 +5,16 @@ import com.assignment.canvas.receiver.Canvas;
 
 import java.util.List;
 
-public class CreateCanvasCommand implements ICommand{
+public class FillCanvasCommand implements ICommand {
 
     private final Canvas canvas;
 
-    public CreateCanvasCommand(Canvas canvas) {
+    public FillCanvasCommand(Canvas canvas) {
         this.canvas = canvas;
     }
 
+    @Override
     public void execute(List<String> params) {
-        canvas.createCanvas(params);
+        canvas.fillCanvas(params);
     }
 }

@@ -15,7 +15,11 @@ public class ClearCanvasValidator implements IValidator {
 
     public static ClearCanvasValidator getInstance() {
         if (validator == null) {
-            validator = new ClearCanvasValidator();
+            synchronized (ClearCanvasValidator.class) {
+                if (validator == null) {
+                    validator = new ClearCanvasValidator();
+                }
+            }
         }
         return validator;
     }

@@ -15,14 +15,18 @@ public class RectangleValidator implements IValidator{
 
     public static RectangleValidator getInstance() {
         if (validator == null) {
-            validator = new RectangleValidator();
+            synchronized (RectangleValidator.class) {
+                if (validator == null) {
+                    validator = new RectangleValidator();
+                }
+            }
         }
         return validator;
     }
 
     @Override
     public boolean validate(List<String> commandParamList, Canvas canvas) throws InvalidInputException {
-        if (canvas == null) {
+        if (canvas == null || canvas.getMatrix() == null || canvas.getMatrix().length == 0) {
             throw new InvalidInputException(Error.CANVAS_NOT_EXIT.getErrorDesc());
         }
         if (ValidationUtil.isReqParamPresent(commandParamList, REQ_PARAMS)) {
@@ -41,7 +45,7 @@ public class RectangleValidator implements IValidator{
                     throw new InvalidInputException(Error.RECTANGLE_FROM_LINE.getErrorDesc());
                 }
             } catch (NumberFormatException exception) {
-                throw new InvalidInputException(Error.NON_NUMERIC_PARAMS.getErrorDesc());
+                throw new InvalidInputException(Error.NON_NUMERIC_COORDINATES.getErrorDesc());
             }
         } else {
             throw new InvalidInputException(Error.PARAM_NOT_MATCH.getErrorDesc());

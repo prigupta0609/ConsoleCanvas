@@ -1,12 +1,13 @@
 package com.assignment.canvas.model;
 
 public enum CommandType {
-    CREAT_CANVAS("C"),
+    CREATE_CANVAS("C"),
     CLEAR_CANVAS("Z"),
     DRAW_LINE("L"),
     DRAW_RECTANGLE("R"),
-    FILL_BACKGROUND("B"),
-    QUIT("Q");
+    FILL_CANVAS("F"),
+    QUIT("Q"),
+    HELP("H");
 
     private String shortName;
     private CommandType(String shortName) {

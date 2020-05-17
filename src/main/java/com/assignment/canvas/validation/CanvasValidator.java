@@ -15,10 +15,15 @@ public class CanvasValidator implements IValidator {
 
     public static CanvasValidator getInstance() {
         if (validator == null) {
-            validator = new CanvasValidator();
+            synchronized (CanvasValidator.class) {
+                if (validator == null) {
+                    validator = new CanvasValidator();
+                }
+            }
         }
         return validator;
     }
+
     @Override
     public boolean validate(List<String> commandParamList, Canvas canvas) throws InvalidInputException {
         if (ValidationUtil.isReqParamPresent(commandParamList, REQ_PARAMS)) {
@@ -32,7 +37,7 @@ public class CanvasValidator implements IValidator {
                     throw new InvalidInputException(Error.NOT_2D_SPACE.getErrorDesc());
                 }
             } catch (NumberFormatException exception) {
-                throw new InvalidInputException(Error.NON_NUMERIC_PARAMS.getErrorDesc());
+                throw new InvalidInputException(Error.NON_NUMERIC_COORDINATES.getErrorDesc());
             }
         } else {
             throw new InvalidInputException(Error.PARAM_NOT_MATCH.getErrorDesc());

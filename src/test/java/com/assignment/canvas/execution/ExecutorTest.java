@@ -1,15 +1,11 @@
 package com.assignment.canvas.execution;
 
 import com.assignment.canvas.TestUtil;
-import com.assignment.canvas.exception.Error;
 import com.assignment.canvas.receiver.Canvas;
-import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
 import java.util.Arrays;
 
 public class ExecutorTest {
@@ -17,20 +13,12 @@ public class ExecutorTest {
     private Canvas canvas = new Canvas();
     private Executor executor = new Executor();
     private ExecutionContext context = new ExecutionContext();
-    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-    private final PrintStream originalOut = System.out;
 
     @Before
     public void setUp() {
         CommandRegistry registry = CommandRegistryLoader.build(canvas);
         context.setCanvas(canvas);
         context.setRegistry(registry);
-        System.setOut(new PrintStream(outContent));
-    }
-
-    @After
-    public void restoreStreams() {
-        System.setOut(originalOut);
     }
 
     @Test

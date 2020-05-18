@@ -17,6 +17,10 @@ public class Executor {
         for (String arg : arguments) {
             commandList.add(arg.trim());
         }
+        invokeCommand(context, arguments, commandList);
+    }
+
+    private void invokeCommand(ExecutionContext context, String[] arguments, List<String> commandList) {
         Canvas canvas = context.getCanvas();
         CommandRegistry registry = context.getRegistry();
         if (CommandValidator.validate(commandList, canvas)) {

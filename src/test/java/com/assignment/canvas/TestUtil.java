@@ -37,4 +37,16 @@ public class TestUtil {
             Assert.assertArrayEquals(expectedMatrix[i], actualMatrix[i]);
         }
     }
+
+    public static String getMenu() {
+        StringBuilder str = new StringBuilder("");
+        str.append("Available commands for our canvas:\r\n");
+        str.append("Create canvas     ->   C x y\r\n");
+        str.append("Clear canvas      ->   Z\r\n");
+        str.append("Draw line         ->   L x1 y1 x2 y2\r\n");
+        str.append("Draw rectangle    ->   R x1 y1 x2 y2\r\n");
+        str.append("Quit application  ->   Q\r\n");
+        str.append("Help              ->   H");
+        return str.toString();
+    }
 }

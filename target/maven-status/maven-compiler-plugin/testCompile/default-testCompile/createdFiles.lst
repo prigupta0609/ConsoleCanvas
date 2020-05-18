@@ -1,0 +1,11 @@
+com\assignment\canvas\receiver\CanvasTest.class
+com\assignment\canvas\MenuTest.class
+com\assignment\canvas\validation\CommandValidatorTest.class
+com\assignment\canvas\validation\ClearCanvasValidatorTest.class
+com\assignment\canvas\validation\ValidatorFactoryTest.class
+com\assignment\canvas\TestUtil.class
+com\assignment\canvas\validation\CanvasValidatorTest.class
+com\assignment\canvas\validation\RectangleValidatorTest.class
+com\assignment\canvas\execution\ExecutorTest.class
+com\assignment\canvas\validation\LineValidatorTest.class
+com\assignment\canvas\validation\FillCanvasValidatorTest.class

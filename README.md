@@ -48,6 +48,7 @@ It is broken into following packages based upon their functionality:
 11. Purpose of validator remain the same for every command object. Hence validators are made singleton.
 12. All the utility classes contain static method as they just extend some kind of help to the objects.
 13. Only one kind of exception is considered - InvalidInputException. This can be broken down further but keeping into account the scope of application I have added all in one.
+14. I have used System.out.println() at certain places to print but in production this will be replaced with Loggers or any other utility libraries.
 
 **Future scope**
 

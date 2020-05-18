@@ -20,7 +20,7 @@ public class Application {
         ExecutionContext context = new ExecutionContext();
         Menu.display();
         while (true) {
-            System.out.println("Enter command : ");
+            System.out.print("Enter command (Press H for Help) : ");
             String command = scanner.nextLine();
             if (command.trim().length() > 0) {
                 if (command.equals(CommandType.QUIT.getShortName())) {

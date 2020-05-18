@@ -1,9 +1,6 @@
-package com.assignment.canvas;
+package com.assignment.canvas.util;
 
-import com.assignment.canvas.exception.Error;
-import com.assignment.canvas.execution.CommandRegistry;
-import com.assignment.canvas.execution.CommandRegistryLoader;
-import com.assignment.canvas.util.Menu;
+import com.assignment.canvas.TestUtil;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;

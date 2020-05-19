@@ -13,6 +13,7 @@ import java.util.Arrays;
 public class CanvasValidatorTest {
 
     private final CanvasValidator validator = CanvasValidator.getInstance();
+    private static final String DIMENSION_ERROR_MESSAGE = "Supported dimension is 100x100";
 
     @Test
     public void testValidCanvas() throws InvalidInputException {
@@ -74,5 +75,12 @@ public class CanvasValidatorTest {
     @Test
     public void testNoCanvasExistPrior() throws InvalidInputException {
         Assert.assertTrue(validator.validate(Arrays.asList("C", "10", "30"), null));
+    }
+
+    @Test
+    public void testMaxCanvasSize() throws InvalidInputException {
+        expectedEx.expect(InvalidInputException.class);
+        expectedEx.expectMessage(Error.MAX_CANVAS_EXCEEDED.getErrorDesc() + DIMENSION_ERROR_MESSAGE);
+        validator.validate(Arrays.asList("C", "100", "101"), new Canvas());
     }
 }

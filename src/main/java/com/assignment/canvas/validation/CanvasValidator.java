@@ -10,6 +10,8 @@ import java.util.List;
 public class CanvasValidator implements IValidator {
 
     private static final int REQ_PARAMS = 3;
+    private static final int MAX_DIMENSION = 100;
+    private static final String DIMENSION_ERROR_MESSAGE = "Supported dimension is " + MAX_DIMENSION + "x" + MAX_DIMENSION;
     private static CanvasValidator validator = null;
     private CanvasValidator() {}
 
@@ -35,6 +37,9 @@ public class CanvasValidator implements IValidator {
                 }
                 if (x == 0 || y == 0) {
                     throw new InvalidInputException(Error.NOT_2D_SPACE.getErrorDesc());
+                }
+                if (x > MAX_DIMENSION || y > MAX_DIMENSION) {
+                    throw new InvalidInputException(Error.MAX_CANVAS_EXCEEDED.getErrorDesc() + DIMENSION_ERROR_MESSAGE);
                 }
             } catch (NumberFormatException exception) {
                 throw new InvalidInputException(Error.NON_NUMERIC_COORDINATES.getErrorDesc());

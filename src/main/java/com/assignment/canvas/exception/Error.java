@@ -9,7 +9,8 @@ public enum Error {
     NON_NUMERIC_COORDINATES("Non numeric coordinates are not valid"),
     INVALID_LINE_COORDINATES("Diagonal or points not supported"),
     NOT_2D_SPACE("Invalid input to create 2D space"),
-    CANVAS_NOT_EXIT("Create canvas before painting");
+    CANVAS_NOT_EXIT("Create canvas before painting"),
+    MAX_CANVAS_EXCEEDED("Dimensions are more than supported canvas limit.");
 
     private String errorDesc;
 
